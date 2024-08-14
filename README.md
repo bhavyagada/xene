@@ -1,4 +1,4 @@
-# Xene || Orion
+# Xene
 
 > A Radical Programming Platform for Assessing Logical Abilities
 
