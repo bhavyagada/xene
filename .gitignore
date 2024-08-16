@@ -57,6 +57,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
+env
 .env
 env.*
 # Yes, I'm a bad person. But Nuxt needs dotenv to load .env before heroku-postbuild runs.
