@@ -26,7 +26,7 @@
     </v-app-bar>
 
     <!-- Sizes your content based upon application components -->
-    <v-content>
+    <v-main>
       <v-container fluid :class="{ scrollbar: $device.isDesktop }">
         <nuxt />
 
@@ -74,7 +74,7 @@
           <span>Fullscreen mode</span>
         </v-tooltip>
       </v-container>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
