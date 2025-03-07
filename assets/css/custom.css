@@ -1,0 +1,113 @@
+.cm-s-custom {
+	font-size: 1em;
+	line-height: 1.5em;
+	font-family: inconsolata, monospace;
+	letter-spacing: 0.3px;
+	word-spacing: 1px;
+	background: #0c2233;
+	color: #EDEDED;
+}
+
+.cm-s-custom .CodeMirror-lines {
+	padding: 8px 0;
+}
+
+.cm-s-custom .CodeMirror-gutters {
+	box-shadow: 1px 0 1px 0 rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 1px 0 1px 0 rgba(0, 0, 0, 0.1);
+	background-color: #0c2233;
+	padding-right: 10px;
+	z-index: 3;
+	border: none;
+}
+
+.cm-s-custom div.CodeMirror-cursor {
+	border-left: 3px solid #EDEDED;
+}
+
+.cm-s-custom .CodeMirror-activeline-background {
+	background: #2d4059;
+}
+
+.cm-s-custom .CodeMirror-selected {
+	background: #333333;
+}
+
+.cm-s-custom .cm-comment {
+	color: #7C7C7C;
+}
+
+.cm-s-custom .cm-keyword {
+	color: #00BCEB;
+}
+
+.cm-s-custom .cm-string {
+	color: #FFC107;
+}
+
+.cm-s-custom .cm-number {
+	color: #f9d276;
+}
+
+.cm-s-custom .cm-property {
+	color: #DAD085;
+}
+
+.cm-s-custom .cm-atom {
+	color: #5f85db;
+}
+
+.cm-s-custom .cm-operator {
+	color: #fd7014;
+}
+
+.cm-s-custom .cm-variable {
+	color: #2dbcad;
+}
+
+.cm-s-custom .cm-variable-2 {
+	color: #a3f7bf;
+}
+
+.cm-s-custom .cm-bracket {
+	color: #bbe1fa;
+}
+
+.cm-s-custom .CodeMirror-linenumber {
+	color: lightsteelblue;
+}
+
+.hg-theme-default .hg-button.hg-activeButton {
+	background: #008494;
+}
+
+div.CodeMirror span.CodeMirror-matchingbracket {
+	color: #1de9b6;
+}
+
+.CodeMirror-cursor {
+	visibility: visible !important;
+	-webkit-animation: blink 1s infinite;
+	-moz-animation: blink 1s infinite;
+	-o-animation: blink 1s infinite;
+	animation: blink 1s infinite;
+	border-left: 1px solid #2dbcad !important;
+}
+
+@keyframes blink {
+	0% {
+		opacity: 0;
+	}
+	40% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	90% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
