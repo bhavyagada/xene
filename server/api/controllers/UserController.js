@@ -6,7 +6,7 @@ function getUserFromAuth0(token) {
     // console.log(token);
     return axios({
         method: 'get',
-        url: 'http://' + process.env.AUTH0_DOMAIN + '/userinfo',
+        url: 'https://' + process.env.AUTH0_DOMAIN + '/userinfo',
         data: {},
         headers: {
             'Authorization': token
