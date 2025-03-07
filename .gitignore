@@ -92,4 +92,7 @@ sw.*
 
 # env files
 .env
-env.*
+.env.dev
+.env.xene
+.env.*
+env
