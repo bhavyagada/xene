@@ -13,6 +13,9 @@
   "engines": {
     "node": "18.x"
   },
+  "resolutions": {
+    "buffer": "^6.0.3"
+  },
   "dependencies": {
     "@nuxtjs/auth": "^4.8.5",
     "@nuxtjs/axios": "^5.9.5",
