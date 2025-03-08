@@ -88,7 +88,7 @@
         :value="solve_snackbar.length > 0 && !hint_shown"
         top
         color="cyan darken-4"
-        :timeout="0"
+        :timeout="-1"
         id="solve_snackbar"
         style="top: 63px"
       >
@@ -456,7 +456,7 @@
             :value="key_snackbar"
             bottom
             color="teal"
-            :timeout="0"
+            :timeout="-1"
             v-if="$route.params.id == 1"
           >
             Click on the
