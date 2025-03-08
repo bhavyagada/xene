@@ -83,7 +83,7 @@ exports.fetchUsersFromAuth0 = async function (distinctSubs) {
 
             return await axios({
                 method: 'get',
-                url: 'http://' + process.env.AUTH0_DOMAIN + '/api/v2/users?' + qs,
+                url: 'https://' + process.env.AUTH0_DOMAIN + '/api/v2/users?' + qs,
                 headers: {
                     'Authorization': 'Bearer ' + token.data.access_token
                 }

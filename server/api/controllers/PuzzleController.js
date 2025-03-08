@@ -38,7 +38,7 @@ exports.interpretCode = function (req, res) {
             let cases = casesSource.visible;
             let hiddenCases = casesSource.hidden;            
 
-            axios.post('https://gointerpreter.herokuapp.com', {Params: cases, HiddenParams:hiddenCases, Code: req.body.serializedCode })
+            axios.post('http://xeneinterpreter.koyeb.app', {Params: cases, HiddenParams:hiddenCases, Code: req.body.serializedCode })
             .then(data => {
                 res.json(data.data);
             })
