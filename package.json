@@ -5,9 +5,9 @@
   "author": "Bhavya Gada",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "dev": "nodemon server/index.js --watch server",
     "build": "nuxt build",
-    "start": "cross-env NODE_ENV=production node server/index.js",
+    "start": "node server/index.js",
     "generate": "nuxt generate"
   },
   "engines": {
@@ -26,7 +26,6 @@
     "c3": "^0.7.15",
     "cookie-parser": "^1.4.4",
     "countup.js": "^2.0.4",
-    "cross-env": "^5.2.0",
     "d3": "^5.15.0",
     "dotenv": "^8.2.0",
     "express": "^4.16.4",
