@@ -8,15 +8,15 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    // titleTemplate: process.env.PROJECT_NAME + '%s - ',
-    // title: process.env.PROJECT_NAME || '',
+    // titleTemplate: 'Xene' + '%s - ',
+    // title: 'Xene' || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.PROJECT_DESCRIPTION || '' }
+      { hid: 'description', name: 'description', content: 'A Radical Programming Platform' || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/' + process.env.PROJECT_ID + '-favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/xene-favicon.ico' }
     ]
   },
   /*
@@ -146,10 +146,10 @@ module.exports = {
   },
   pwa: {
     manifest: {
-      name: process.env.PROJECT_NAME,
+      name: 'Xene',
     },
     icon: {
-      iconFileName: process.env.PROJECT_ID + '-icon.png'
+      iconFileName: 'xene-icon.png'
     }
   },
   // vue:{

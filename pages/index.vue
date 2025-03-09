@@ -43,7 +43,7 @@ import OverlayLoader from '~/components/OverlayLoader.vue'
 export default {
   head() {
     return {
-      title: process.env.PROJECT_NAME + ' - Home'
+      title: 'Xene - Home'
     }
   },
   components: {

@@ -3,7 +3,7 @@
     <v-app-bar app style="background: linear-gradient(to right, #0e293c, #141e30, #0b2130);">
       <template v-if="$auth.loggedIn">
         <nuxt-link to="/">
-          <v-img :src="'/images/' +projectId + '.png'" max-height="100" max-width="100" contain></v-img>
+          <v-img :src="'/images/xene.png'" max-height="100" max-width="100" contain></v-img>
         </nuxt-link>
 
         <v-spacer />
@@ -14,7 +14,7 @@
 
       <template v-else class="pa-0 ma-0">
         <nuxt-link to="/">
-          <v-img :src="'/images/' +projectId + '.png'" max-height="100" max-width="100" contain></v-img>
+          <v-img :src="'/images/xene.png'" max-height="100" max-width="100" contain></v-img>
         </nuxt-link>
         <v-spacer />
         <v-icon
@@ -85,8 +85,8 @@ import UserDialog from '../components/UserDialog'
 export default {
   data() {
     return {
-      projectName: process.env.PROJECT_NAME,
-      projectId: process.env.PROJECT_ID,
+      projectName: 'Xene',
+      projectId: 'xene',
       hidden: false,
       dialog: false
     }

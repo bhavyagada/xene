@@ -300,7 +300,7 @@ export default {
   middleware: ['auth'],
   head() {
     return {
-      title: process.env.PROJECT_NAME + ' - Challenges'
+      title: 'Xene - Challenges'
     }
   },
   components: {

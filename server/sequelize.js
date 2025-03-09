@@ -386,7 +386,7 @@ function syncDB() {
         //   ]
         // }
 
-        // return User.bulkCreate(subs[process.env.PROJECT_ID])
+        // return User.bulkCreate(subs['xene'])
         //   .then(users => {
             // return Puzzle.count()
             //   .then((puzzles_count) => {
