@@ -1,36 +1,25 @@
 const express = require('express')
-const consola = require('consola')
 const redirectSSL = require('redirect-ssl')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
-
-// Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
 config.dev = process.env.NODE_ENV !== 'production'
 
 async function start () {
-  // Init Nuxt.js
   const nuxt = new Nuxt(config)
   const port = process.env.PORT || nuxt.options.server.port;
   const host = process.env.NODE_ENV === 'production' ? '0.0.0.0' : nuxt.options.server.host;
 
-  // Build only in dev mode
   if (config.dev) {
-    const builder = new Builder(nuxt)
-    await builder.build()
+    await new Builder(nuxt).build()
   } else {
     await nuxt.ready()
   }
-  
-  app.use(redirectSSL)
-  // Give nuxt middleware to express
-  app.use(nuxt.render)
 
-  // Listen the server
+  app.use(redirectSSL)
+  app.use(nuxt.render) // nuxt middleware to express
+
   app.listen(port, host)
-  consola.ready({
-    message: `Server listening on http://${host}:${port}`,
-    badge: true
-  })
+  console.log(`Server listening on http://${host}:${port}`)
 }
 start()
