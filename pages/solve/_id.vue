@@ -506,11 +506,10 @@
 import SimpleKeyboard from '~/components/SimpleKeyboard.vue'
 import Lottie from '~/components/Lottie.vue'
 import RadarChart from '~/components/RadarChart.vue'
+import introJS from 'intro.js/minified/intro.min.js'
 import 'intro.js/minified/introjs.min.css'
 import 'intro.js/themes/introjs-modern.css'
 import { radar } from '~/utils/chart-utils'
-
-const introJS = require('intro.js')
 
 export default {
   middleware: ['auth'],
@@ -522,9 +521,7 @@ export default {
   },
   head() {
     return {
-      title:
-        'Solve - ' +
-        this.$store.state.puzzles.find(x => x.id == this.$route.params.id).name
+      title: 'Solve - ' + this.$store.state.puzzles.find(x => x.id == this.$route.params.id).name
     }
   },
   data: function() {
@@ -682,53 +679,50 @@ export default {
           showBullets: false
         }
         intro.setOptions(setoptions)
-        intro
-          .setOptions({
-            steps: [
-              {
-                element: document.querySelector('#open_tutorial'),
-                intro:
-                  '<b style="color:#00bcd4">Tutorial Mode</b><br><button type="button" class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large teal--text text--accent-3" style="color: #1de9b6"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-help-rhombus-outline theme--dark"></i></span></button>on for <span style="color:#2dbcad">syntax</span><br><button type="button" class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large teal--text text--accent-3" style="color: red"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-help-rhombus-outline theme--dark"></i></span></button>off to <span style="color:#2dbcad">solve</span>'
-              },
-              {
-                element: document.querySelector('#open_test_cases'),
-                intro:
-                  '<b style="color:#00bcd4">Test Cases</b><br><span style="color:#03A9F4">input</span>-<span style="color:#1DE9B6">goal</span><br>vs.<br><span style="color:#4DD0E1">output</span>'
-              },
-              {
-                element: document.querySelector('.simple-keyboard'),
-                intro:
-                  '<b style="color:#00bcd4">Predictive Programming Keyboard</b><br><span style="color:#2dbcad">Typing code is a thing of the past</span><br>Click your code to solve'
-              },
-              {
-                element: document.querySelector('.vue-codemirror.codemirror'),
-                intro:
-                  '<b style="color:#00bcd4">Code Editor</b><br><span style="color:#2dbcad">Read-only code highlighter with automatic formatting/indentation</span>'
-              },
-              {
-                element: document.querySelector('#execute'),
-                intro:
-                  '<b style="color:#00bcd4">Execute</b><br><span style="color:#2dbcad">Run your code &<br> view output / errors</span>'
-              }
-            ]
-          })
-          .exit()
-          .onchange(function(targetElement) {
-            if (this._currentStep == 0) {
-              vm.tests_dialog = false
-              document.querySelector('.simple-keyboard').style.pointerEvents =
-                'none'
+        intro.setOptions({
+          steps: [
+            {
+              element: document.querySelector('#open_tutorial'),
+              intro:
+                '<b style="color:#00bcd4">Tutorial Mode</b><br><button type="button" class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large teal--text text--accent-3" style="color: #1de9b6"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-help-rhombus-outline theme--dark"></i></span></button>on for <span style="color:#2dbcad">syntax</span><br><button type="button" class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large teal--text text--accent-3" style="color: red"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-help-rhombus-outline theme--dark"></i></span></button>off to <span style="color:#2dbcad">solve</span>'
+            },
+            {
+              element: document.querySelector('#open_test_cases'),
+              intro:
+                '<b style="color:#00bcd4">Test Cases</b><br><span style="color:#03A9F4">input</span>-<span style="color:#1DE9B6">goal</span><br>vs.<br><span style="color:#4DD0E1">output</span>'
+            },
+            {
+              element: document.querySelector('.simple-keyboard'),
+              intro:
+                '<b style="color:#00bcd4">Predictive Programming Keyboard</b><br><span style="color:#2dbcad">Typing code is a thing of the past</span><br>Click your code to solve'
+            },
+            {
+              element: document.querySelector('.vue-codemirror.codemirror'),
+              intro:
+                '<b style="color:#00bcd4">Code Editor</b><br><span style="color:#2dbcad">Read-only code highlighter with automatic formatting/indentation</span>'
+            },
+            {
+              element: document.querySelector('#execute'),
+              intro:
+                '<b style="color:#00bcd4">Execute</b><br><span style="color:#2dbcad">Run your code &<br> view output / errors</span>'
             }
-          })
-          .onexit(function(targetElement) {
-            if (!this.hint_shown)
-              setTimeout(function() {
-                vm.fetchPuzzleSnackbar()
-              }, 1000)
-            document.querySelector('.simple-keyboard').style.pointerEvents =
-              'unset'
-          })
-          .start()
+          ]
+        })
+        intro.onchange(function(targetElement) {
+          if (this._currentStep == 0) {
+            vm.tests_dialog = false
+            document.querySelector('.simple-keyboard').style.pointerEvents = 'none'
+          }
+        })
+        intro.onexit(function(targetElement) {
+          if (!this.hint_shown) {
+            setTimeout(function() {
+              vm.fetchPuzzleSnackbar()
+            }, 1000)
+          }
+          document.querySelector('.simple-keyboard').style.pointerEvents = 'unset'
+        })
+        intro.start()
       } else {
         this.setBlockContext()
         let vm = this
@@ -1332,41 +1326,39 @@ export default {
           syntax = button
         }
       }
-      intro_keys
-        .setOptions({
-          exitOnOverlayClick: false,
-          exitOnEsc: false,
-          doneLabel: 'Close',
-          showBullets: false,
-          showStepNumbers: false,
-          helperElementPadding: 5,
-          steps: [
-            {
-              element:
-                flag == 1
-                  ? document.getElementById(button)
-                  : document
-                      .querySelector(
-                        '[data-skbtn=' + CSS.escape(button) + ']>span'
-                      )
-                      .closest('div'),
-              intro:
-                '<b>Usage:- </b><br>' +
-                syntax +
-                '<br><b>Description:- </b><br>' +
-                key_syntax.keys[index].description,
-              position: 'top'
-            }
-          ]
-        })
-        .exit()
-        .onexit(function(targetElement) {
-          if (flag == 1)
-            document.querySelector(
-              '.v-app-bar.v-app-bar--fixed'
-            ).style.zIndex = 5
-        })
-        .start()
+      intro_keys.setOptions({
+        exitOnOverlayClick: false,
+        exitOnEsc: false,
+        doneLabel: 'Close',
+        showBullets: false,
+        showStepNumbers: false,
+        helperElementPadding: 5,
+        steps: [
+          {
+            element:
+              flag == 1
+                ? document.getElementById(button)
+                : document
+                    .querySelector(
+                      '[data-skbtn=' + CSS.escape(button) + ']>span'
+                    )
+                    .closest('div'),
+            intro:
+              '<b>Usage:- </b><br>' +
+              syntax +
+              '<br><b>Description:- </b><br>' +
+              key_syntax.keys[index].description,
+            position: 'top'
+          }
+        ]
+      })
+      intro_keys.exit()
+      intro_keys.onexit(function(targetElement) {
+        if (flag == 1) {
+          document.querySelector('.v-app-bar.v-app-bar--fixed').style.zIndex = 5
+        }
+      })
+      intro_keys.start()
     }
   },
   watch: {
@@ -1449,7 +1441,11 @@ export default {
 .introjs-tooltipReferenceLayer {
   width: 100%;
 }
+.introjs-tooltipReferenceLayer * {
+  font-family: 'Share Tech Mono' !important;
+}
 .introjs-helperLayer:after {
+  content: '';
   left: 0;
   right: 0;
   top: 0;
@@ -1459,7 +1455,7 @@ export default {
 }
 
 .introjs-tooltip {
-  font-family: 'Share Tech Mono';
+  font-family: 'Share Tech Mono' !important;
   background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
