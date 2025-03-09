@@ -85,19 +85,22 @@ export default {
     }
     var offset = 0
     function Spline() {
-      this.geometry = new THREE.Geometry()
+      this.geometry = new THREE.BufferGeometry()
       this.color = Math.floor(Math.random() * 80 + 180)
+      const positions = new Float32Array(180 * 3)
+      const colors = new Float32Array(180 * 3)
       for (var j = 0; j < 180; j++) {
-        this.geometry.vertices.push(
-          new THREE.Vector3((j / 180) * length * 2 - length, 0, 0)
-        )
-        this.geometry.colors[j] = new THREE.Color(
-          'hsl(' + (j * 0.6 + this.color) + ',70%,70%)'
-        )
+        positions[j*3] = (j / 180) * length * 2 - length
+        positions[j*3+1] = 0
+        positions[j*3+2] = 0
+        const hslColor = new THREE.Color('hsl(' + (j * 0.6 + this.color) + ',70%,70%)')
+        colors[j*3] = hslColor.r
+        colors[j*3+1] = hslColor.g
+        colors[j*3+2] = hslColor.b
       }
-      this.material = new THREE.LineBasicMaterial({
-        vertexColors: THREE.VertexColors
-      })
+      this.geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+      this.geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
+      this.material = new THREE.LineBasicMaterial({ vertexColors: true })
       this.mesh = new THREE.Line(this.geometry, this.material)
       this.speed = (Math.random() + 0.1) * 0.0002
       scene.add(this.mesh)
@@ -107,17 +110,14 @@ export default {
     function render(a) {
       requestAnimationFrame(render)
       for (var i = 0; i < splines.length; i++) {
-        for (var j = 0; j < splines[i].geometry.vertices.length; j++) {
-          var vector = splines[i].geometry.vertices[j]
-          vector.y =
-            noise.simplex2(j * 0.05 + i - offset, a * splines[i].speed) * 8
-          vector.z =
-            noise.simplex2(vector.x * 0.05 + i, a * splines[i].speed) * 8
-
-          vector.y *= 1 - Math.abs(vector.x / length)
-          vector.z *= 1 - Math.abs(vector.x / length)
+        const positions = splines[i].geometry.attributes.position.array
+        for (var j = 0; j < 180; j++) {
+          positions[j*3+1] = noise.simplex2(j * 0.05 + i - offset, a * splines[i].speed) * 8;
+          positions[j*3+2] = noise.simplex2(positions[j*3] * 0.05 + i, a * splines[i].speed) * 8;
+          positions[j*3+1] *= 1 - Math.abs(positions[j*3] / length);
+          positions[j*3+2] *= 1 - Math.abs(positions[j*3] / length);
         }
-        splines[i].geometry.verticesNeedUpdate = true
+        splines[i].geometry.attributes.position.needsUpdate = true
       }
       scene.rotation.x = a * 0.0003
       if (isMouseDown) {
@@ -142,13 +142,15 @@ export default {
     }
     function updateColor() {
       for (var i = 0; i < splines.length; i++) {
-        var color = Math.abs((splines[i].color - offset * 10) % 360)
-        for (var j = 0; j < splines[i].geometry.vertices.length; j++) {
-          splines[i].mesh.geometry.colors[j] = new THREE.Color(
-            'hsl(' + (j * 0.6 + color) + ',70%,70%)'
-          )
+        const colors = splines[i].geometry.attributes.color.array;
+        var color = Math.abs((splines[i].color - offset * 10) % 360);
+        for (var j = 0; j < 180; j++) {
+          const hslColor = new THREE.Color('hsl(' + (j * 0.6 + color) + ',70%,70%)');
+          colors[j * 3] = hslColor.r;
+          colors[j * 3 + 1] = hslColor.g;
+          colors[j * 3 + 2] = hslColor.b;
         }
-        splines[i].mesh.geometry.colorsNeedUpdate = true
+        splines[i].geometry.attributes.color.needsUpdate = true;
       }
     }
     function onMouseDown(e) {
