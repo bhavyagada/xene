@@ -12,10 +12,10 @@ const sequelize = new Sequelize({
   dialect: process.env.DB_DIALECT,
   logging: false,
   dialectOptions: {
-    ssl: {
+    ssl: process.env.NODE_ENV === "production" ? {
       require: true,
       rejectUnauthorized: false
-    }
+    } : false
   }
 })
 
