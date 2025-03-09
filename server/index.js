@@ -8,25 +8,11 @@ const app = express()
 const config = require('../nuxt.config.js')
 config.dev = process.env.NODE_ENV !== 'production'
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Credentials', 'true')
-  res.header('Access-Control-Allow-Headers', '*')
-  res.header('Access-Control-Expose-Headers', '*')
-  
-  if (req.method === 'OPTIONS') {
-    res.sendStatus(204);
-  } else {
-    next();
-  }
-});
-
 async function start () {
   // Init Nuxt.js
   const nuxt = new Nuxt(config)
-  const port = process.env.PORT || nuxt.options.server.port || 8000;
-  const host = process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost';
+  const port = process.env.PORT || nuxt.options.server.port;
+  const host = process.env.NODE_ENV === 'production' ? '0.0.0.0' : nuxt.options.server.host;
 
   // Build only in dev mode
   if (config.dev) {
