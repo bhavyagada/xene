@@ -5,7 +5,7 @@
   "author": "Bhavya Gada",
   "private": true,
   "scripts": {
-    "dev": "node --watch-path=./server server/index.js",
+    "dev": "node --env-file=.env --watch-path=./server server/index.js",
     "build": "nuxt build",
     "start": "node server/index.js",
     "generate": "nuxt generate"
@@ -17,27 +17,25 @@
     "buffer": "^6.0.3"
   },
   "dependencies": {
-    "@nuxtjs/auth": "^4.8.5",
-    "@nuxtjs/axios": "^5.9.5",
+    "@nuxtjs/auth": "^4.9.1",
+    "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/device": "^1.2.7",
-    "@nuxtjs/pwa": "^3.0.0-beta.20",
-    "@nuxtjs/sentry": "^4.0.2",
+    "@nuxtjs/pwa": "^3.3.5",
     "body-parser": "^1.20.3",
     "c3": "^0.7.20",
     "cookie-parser": "^1.4.7",
-    "countup.js": "^2.0.4",
-    "d3": "^5.15.0",
-    "dotenv": "^16.4.7",
+    "countup.js": "^2.8.0",
+    "d3": "^5.16.0",
     "express": "^4.21.2",
     "intro.js": "^7.2.0",
     "lottie-web": "^5.12.2",
-    "nuxt": "^2.11.0",
+    "nuxt": "^2.18.1",
     "perlin": "^1.0.0",
     "pg": "^8.13.3",
     "prismjs": "^1.29.0",
     "redirect-ssl": "^1.4.1",
     "sequelize": "^6.37.6",
-    "simple-keyboard": "^2.28.21",
+    "simple-keyboard": "^2.32.131",
     "three": "^0.174.0",
     "vue-codemirror": "^4.0.6",
     "vue-countup-v2": "^4.0.0",
@@ -46,9 +44,9 @@
     "vuetify-loader": "^1.9.2"
   },
   "devDependencies": {
-    "@nuxtjs/dotenv": "^1.4.1",
-    "@nuxtjs/vuetify": "^1.11.0",
+    "@nuxtjs/dotenv": "^1.4.2",
+    "@nuxtjs/vuetify": "^1.12.3",
     "html-webpack-plugin": "^4.5.2",
-    "webpack": "^4.46.0"
+    "webpack": "^4.47.0"
   }
 }

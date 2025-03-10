@@ -57,8 +57,11 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-#.env
-# Yes, I'm a bad person. But Nuxt needs dotenv to load .env before heroku-postbuild runs.
+.env
+.env.dev
+.env.xene
+.env.*
+env
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -89,10 +92,3 @@ sw.*
 
 # Vim swap files
 *.swp
-
-# env files
-.env
-.env.dev
-.env.xene
-.env.*
-env

@@ -1,7 +1,6 @@
 const colors = require('vuetify/es5/util/colors').default
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
-require('dotenv').config()
 
 module.exports = {
   /*
@@ -58,17 +57,11 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     '@nuxtjs/auth',
-    '@nuxtjs/sentry',
     [
       '@nuxtjs/device',
       {defaultUserAgent: 'Mozilla/5.0 (Linux; Android 5.1.1; Nexus 6 Build/LYZ28E) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.39 Mobile Safari/537.36'}
     ]
   ],
-  sentry: {
-    dsn: 'https://b79e26d6b2df4a9cb87a01bc329e035c@o379859.ingest.sentry.io/5205167', // Enter your project's DSN here
-    disabled: process.env.NODE_ENV === 'development',
-    config: {}    
-  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
