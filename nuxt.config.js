@@ -1,7 +1,6 @@
 const colors = require('vuetify/es5/util/colors').default
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
-require('dotenv').config()
 
 module.exports = {
   /*
