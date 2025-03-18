@@ -139,7 +139,7 @@ module.exports = {
       name: 'Xene',
     },
     icon: {
-      iconFileName: 'xene-icon.png'
+      fileName: 'xene-icon.png'
     }
   },
   // vue:{
