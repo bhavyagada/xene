@@ -68,7 +68,7 @@ module.exports = {
   */
   axios: {
     proxy: false,
-    baseURL: process.env.NODE_ENV === 'production' ? 'https://xene-bsg.koyeb.app' : 'http://localhost:3000'
+    baseURL: process.env.NODE_ENV === 'production' ? 'https://xene.onrender.com' : 'http://localhost:3000'
   },
   // proxy: {
   //   '/api': 'http://localhost:3000'
